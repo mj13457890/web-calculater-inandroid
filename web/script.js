@@ -9,9 +9,15 @@ function clearDisplay() {
 }
 
 function calculate() {
+  if (display.value === "Error") {
+    clearDisplay();
+    return;
+  }
+
   try {
-    display.value = eval(display.value);
-  } catch {
-    display.value = 'Error';
+    const result = eval(display.value);
+    display.value = result;
+  } catch (err){
+    display.value = "Error";
   }
 }
